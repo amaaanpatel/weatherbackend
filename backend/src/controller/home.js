@@ -7,7 +7,7 @@ module.exports = {
     // get the weathe deatils for the default city mumbai
     getDefaultCityWeather: async (req,res) => {
         try {
-            let result = await axios.get(`${config.OW_BASE}/weather?q=mumbai&appid=858f15fed9292cbe25c341a754c55e45`);
+            let result = await axios.get(`${config.OW_BASE}/weather?q=mumbai&appid=${process.env.OW_KEY}`);
             //get the search cities
             res.json({status:true,data:result.data})
         } catch (error) {

@@ -13,7 +13,7 @@ module.exports = {
             let city = await getCityInDataBase(req.body.city);
             //if city exist
             if(city.length) return res.json({status:true,data:city[0].data});
-            let result = await axios.get(`${config.OW_BASE}/weather?q=${req.body.city}&appid=858f15fed9292cbe25c341a754c55e45`);
+            let result = await axios.get(`${config.OW_BASE}/weather?q=${req.body.city}&appid=${process.env.OW_KEY}`);
             //add the city to the database for futhure
             if(result.data.cod == 200) await addCityToDatabase(result.data);
             //send the respnse
