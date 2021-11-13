@@ -4,7 +4,7 @@ const axios = require('axios');
 const City =  require('../../models/cities');
 
 module.exports = {
-    // add the city to the  database
+    // add and get the city to the  database
     addCity: async (req,res) => {
         try {
             console.log(req.body)
@@ -23,6 +23,7 @@ module.exports = {
             res.json({status:false,data:{},message:"Some error"})
         }
     },
+    //get all the cites for the list
     getCities:async (req,res) => {
         try {
             let result = await City.find({},{cityName:1,_id:0});
@@ -34,7 +35,7 @@ module.exports = {
 
 }
 
-
+// get the cities from the database
 async function getCityInDataBase (cityName){
     try {
         let result = await City.find({cityName:cityName});
